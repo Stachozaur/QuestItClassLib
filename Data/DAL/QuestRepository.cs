@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Job.it_classes.Data.DAL
 {
-    public class TaskRepository
+    public class QuestRepository
     {
         
     }

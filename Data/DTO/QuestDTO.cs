@@ -1,4 +1,5 @@
 ﻿using Job.it_classes.Data.Entities;
+using Job.it_ClassLib.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Job.it_classes.Data.DTO
     {
         public int QuestId { get; set; }
         public int Price { get; set; }
-        public QuestCategory Category { get; set; }
+        public QuestCategory QuestCategory { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
         public DateTime PublishingDate { get; set; }

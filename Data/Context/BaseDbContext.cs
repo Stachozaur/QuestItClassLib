@@ -15,8 +15,9 @@ namespace Job.it_classes.Data.Context
         {
 
         }
-        public DbSet<Quest> Quests { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Quest> Quests { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder bldr)
         {

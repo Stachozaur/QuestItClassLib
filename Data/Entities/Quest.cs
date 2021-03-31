@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Job.it_ClassLib.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace Job.it_classes.Data.Entities
     {
         public int QuestId { get; set; }
         public int Price { get; set; }
-        public QuestCategory Category { get; set; }
+        public QuestCategory QuestCategory { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
         public DateTime PublishingDate { get; set; } = DateTime.Now;
@@ -18,7 +19,7 @@ namespace Job.it_classes.Data.Entities
         public int EstimatedTime { get; set; }
         public User User { get; set; }
         public string Location { get; set; }
-        public IEnumerable<User> Applicants { get; set; }
+        public ICollection<Applicant> Applicants { get; set; }
 
     }
 }

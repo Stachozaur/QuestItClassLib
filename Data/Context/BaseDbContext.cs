@@ -1,5 +1,7 @@
 ﻿using Job.it_classes.Data.Entities;
+using Job.it_ClassLib.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +12,95 @@ namespace Job.it_classes.Data.Context
 {
     public class BaseDbContext : DbContext
     {
-        public BaseDbContext(DbContextOptions<BaseDbContext> options)
+        private readonly IConfiguration _config;
+
+        public BaseDbContext(DbContextOptions<BaseDbContext> options, IConfiguration config)
             : base(options)
         {
-
+            _config = config;
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<Quest> Quests { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder bldr)
         {
+
+            bldr.Entity<User>()
+                .HasData(new
+                {
+                    UserId = 1,
+                    FirstName = "Eddie",
+                    LastName = "Hall",
+                    Email = "eddiehall@beast.com",
+                    Password = "25000kcal",
+                    City = "Newcastle",
+                    RoleId = 2,
+                });
+
+            bldr.Entity<User>()
+                .HasData(new
+                {
+                    UserId = 2,
+                    FirstName = "Luigi",
+                    LastName = "Scissorio",
+                    Email = "lugii@barber.com",
+                    Password = "whisky2137",
+                    City = "Milan",
+                    RoleId = 2,
+                });
+
+            bldr.Entity<User>()
+                .HasData(new
+                {
+                    UserId = 3,
+                    FirstName = "Mario",
+                    LastName = "Pipeman",
+                    Email = "Mario@Pipeman.com",
+                    Password = "sąsiadkaobok",
+                    City = "Warszawa",
+                    RoleId = 2,
+                });
+
+            bldr.Entity<Role>()
+                .HasData(new
+                {
+                    RoleId = 1,
+                    Name = "Admin"
+                });
+
+            bldr.Entity<Role>()
+                .HasData(new
+                {
+                    RoleId = 2,
+                    Name = "User"
+                });
+
+            bldr.Entity<QuestCategory>()
+                .HasData(new
+                {
+                    QuestCategoryId = 1,
+                    Name = "Sport",
+                    IconFilepath = "/assets/images/hantla1.svg"
+                });
+
+
+            bldr.Entity<QuestCategory>()
+                .HasData(new
+                {
+                    QuestCategoryId = 2,
+                    Name = "Animals",
+                    IconFilepath = "/assets/images/dogev2_cat.svg"
+                });
+
+            bldr.Entity<QuestCategory>()
+                .HasData(new
+                {
+                    QuestCategoryId = 3,
+                    Name = "Barber",
+                    IconFilepath = "/assets/images/Barber_category.svg"
+                });
+
             bldr.Entity<Quest>()
                 .HasData(new
                 {
@@ -32,7 +112,7 @@ namespace Job.it_classes.Data.Context
                     EstimatedTime = 25,
                     Price = 50,
                     Location = "Murzasichle"
-                }); ;
+                });
 
             bldr.Entity<Quest>()
                 .HasData(new

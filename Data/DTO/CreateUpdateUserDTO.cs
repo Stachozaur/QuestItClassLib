@@ -1,18 +1,14 @@
-﻿using Job.it_ClassLib.Data.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Job.it_classes.Data.Entities
+namespace Job.it_ClassLib.Data.DTO
 {
-    public class User
+    public class CreateUpdateUserDTO
     {
-        public int UserId { get; set; }
-        [Required]
-        [StringLength(70)]
         public string FirstName { get; set; }
         [Required]
         [StringLength(70)]
@@ -28,6 +24,5 @@ namespace Job.it_classes.Data.Entities
         [Required]
         [StringLength(30)]
         public string City { get; set; }
-        public Role Role { get; set; }
     }
 }
